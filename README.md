@@ -52,7 +52,7 @@ kubectl expose deployment laravel --type=NodePort --port=80
 </code>
 <br>
 <br>
-#### If you are using minikube 
+## If you are using minikube 
 <br>
 <code>
 minikube service --url=true laravel
