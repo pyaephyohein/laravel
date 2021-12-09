@@ -65,3 +65,13 @@ minikube service --url=true laravel
 http://youripaddress:port
 </code>
 
+## If you are using in cloud
+
+<code>
+http://your-node-ip:port
+</code>
+<br>
+### You can check port
+<code>
+kubectl get svc 
+</code>
