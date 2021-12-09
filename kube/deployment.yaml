@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   labels:
     app: laravel
-    role: rolling-update
   name: laravel
   namespace: laravel
 spec:

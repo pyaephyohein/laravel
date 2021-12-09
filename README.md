@@ -2,24 +2,13 @@
 
 ## Steps
 
-<code>
-docker build -t {Your-dockerhub-username}/{image-name}
-</code>
-<code>
-docker login
-</code>
-<code>
-docker push {your-dockerhub-username}/{image-name}
-</code>
-
-edit kube/deployment.yaml 
+### Edit kube/deployment.yaml 
 ```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     app: laravel
-    role: rolling-update
   name: laravel
 spec:
   replicas: 4
@@ -38,19 +27,38 @@ spec:
 
 ```
 <code>
+docker build -t {Your-dockerhub-username}/{image-name}
+</code>
+<br>
+<br>
+<code>
+docker login
+</code>
+<br>
+<br>
+<code>
+docker push {your-dockerhub-username}/{image-name}
+</code>
+<br>
+<br>
+<code>
 kubectl apply -f kube/deployment.yaml
 </code>
+<br>
+<br>
 
 <code>
 kubectl expose deployment laravel --type=NodePort --port=80 
 </code>
-
-if you are using minikube 
-
+<br>
+<br>
+##### If you are using minikube 
+<br>
 <code>
 minikube service --url=true laravel
 </code>
-
+<br>
+<br>
 <code>
 http://youripaddress:port
 </code>
