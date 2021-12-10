@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: db
+  name: db
+  namespace: laravel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_DATABASE
+              value: laravel
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: SERVICE_NAME
+              value: mysql
+            # args: ["--default-authentication-plugin=mysql_native_password"]
+          image: mysql:5.7.22
+          name: db
+          ports:
+            - containerPort: 3306
+#           resources: {}
+#           tty: true
+#           volumeMounts:
+#             - mountPath: /var/lib/mysql/
+#               name: dbdata
+#             - mountPath: /etc/mysql/my.cnf
+#               name: db-claim1
+#       restartPolicy: Always
+#       volumes:
+#         - name: dbdata
+#           persistentVolumeClaim:
+#             claimName: dbdata
+#         - name: db-claim1
+#           persistentVolumeClaim:
+#             claimName: db-claim1
+# status: {}
